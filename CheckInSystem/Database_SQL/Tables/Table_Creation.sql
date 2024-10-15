@@ -2,7 +2,7 @@
 GO
 CREATE TABLE employee(
     ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    cardID char(11),
+    cardID char(11) UNIQUE,
     firstName varchar(50),
     middleName varchar(100),
     lastName varchar(50),
