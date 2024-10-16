@@ -12,7 +12,7 @@ CREATE TABLE employee(
 
 USE CheckInSystem
 GO
-CREATE TABLE [Group]
+CREATE TABLE [group]
 (
     ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     GroupName varchar(50) NOT NULL,

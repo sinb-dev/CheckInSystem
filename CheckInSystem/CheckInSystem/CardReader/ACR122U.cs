@@ -1,5 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System.Data.SqlClient;
+using System.Diagnostics;
+using Dapper;
 using FrApp42.ACR122U;
+
 
 namespace CheckInSystem.CardReader;
 
@@ -28,10 +31,21 @@ public class ACR122U
     private static async void OnCardInserted(string uid)
     {
         Debug.WriteLine($"New card detected : {uid}");
+        CardScanned(uid);
     }
 
     private static void OnCardRemoved()
     {
         Debug.WriteLine("Card removed");
     } 
+    
+    private static void CardScanned(string cardID)
+    {
+        string insertQuery = "EXEC CardScanned @cardID";
+        
+        using (var connection = new SqlConnection(Database.Database.ConnectionString))
+        {
+            connection.Query(insertQuery, new {cardID = cardID});
+        }
+    }
 }
