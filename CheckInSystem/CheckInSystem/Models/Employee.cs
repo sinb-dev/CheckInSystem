@@ -13,6 +13,26 @@ public class Employee
     public string LastName { get; set; }
     public bool IsOffSite { get; set; }
     public DateTime OffSiteUntil { get; set; }
+    public bool IsCheckedIn { get; set; }
 
-    
+    public static List<Employee> GetAllEmployees()
+    {
+        //string selectQuery = "SELECT * FROM employee";
+        string selectQuery = @"SELECT 
+            id, 
+            cardid, 
+            firstname, 
+            middlename, 
+            lastname, 
+            isoffsite, 
+            offsiteuntil, 
+            [dbo].[IsEmployeeCheckedIn](ID) as IsCheckedIn
+            FROM employee";
+        using (var connection = new SqlConnection(Database.ConnectionString))
+        {
+            var employees = connection.Query<Employee>(selectQuery).ToList();
+            return employees;
+        }
+    }
 }
+
