@@ -8,7 +8,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CheckInSystem.CardReader;
 
 namespace CheckInSystem;
 
@@ -20,6 +19,6 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
-        ACR122U.StartReader();
+        Startup.Run();
     }
 }
