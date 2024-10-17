@@ -15,7 +15,7 @@ GO
 CREATE TABLE [group]
 (
     ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-    GroupName varchar(50) NOT NULL,
+    name varchar(50) NOT NULL,
 );
 
 USE CheckInSystem

@@ -12,5 +12,7 @@ public class Startup
     {
         ACR122U.StartReader();
         ViewmodelBase.employees = new ObservableCollection<Employee>(Employee.GetAllEmployees());
+        ViewmodelBase.Groups =
+            new ObservableCollection<Group>(Group.GetAllGroups(new List<Employee>(ViewmodelBase.employees)));
     }
 }
