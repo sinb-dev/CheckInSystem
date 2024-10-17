@@ -41,6 +41,8 @@ public class ACR122U
     
     private static void CardScanned(string cardID)
     {
+        if (cardID == "") return;
+
         string insertQuery = "EXEC CardScanned @cardID";
         
         using (var connection = new SqlConnection(Database.Database.ConnectionString))
