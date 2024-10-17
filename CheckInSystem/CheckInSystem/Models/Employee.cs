@@ -51,5 +51,15 @@ public class Employee
             connection.Query(updateQuery, this);
         }
     }
+
+    public void DeleteFromDb()
+    {
+        string deletionQuery = @"DELETE employee WHERE ID = @ID";
+        
+        using (var connection = new SqlConnection(Database.ConnectionString))
+        {
+            connection.Query(deletionQuery, this);
+        }
+    }
 }
 
