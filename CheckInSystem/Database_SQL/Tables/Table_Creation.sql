@@ -37,3 +37,11 @@ CREATE TABLE onSiteTime(
     departureTime DATETIME,
     FOREIGN KEY (employeeID) REFERENCES employee(ID) ON DELETE CASCADE
 );
+
+USE CheckInSystem
+GO
+CREATE TABLE adminUser(
+    ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    username VARCHAR(20) NOT NULL UNIQUE,
+    hashedPassword VARCHAR(60) NOT NULL,
+);

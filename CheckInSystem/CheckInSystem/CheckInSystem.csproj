@@ -9,6 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
       <PackageReference Include="Dapper" Version="2.1.35" />
       <PackageReference Include="FrApp42.ACR122U" Version="1.0.0" />
       <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
