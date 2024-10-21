@@ -14,5 +14,6 @@ public class Startup
         ViewmodelBase.employees = new ObservableCollection<Employee>(Employee.GetAllEmployees());
         ViewmodelBase.Groups =
             new ObservableCollection<Group>(Group.GetAllGroups(new List<Employee>(ViewmodelBase.employees)));
+        Debug.WriteLine(AdminUser.Login("test", "123").Username);
     }
 }

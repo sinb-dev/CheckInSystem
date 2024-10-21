@@ -1,5 +1,6 @@
 ﻿using System.Configuration;
 using System.Data;
+using System.Diagnostics;
 using System.Windows;
 
 namespace CheckInSystem;
@@ -9,4 +10,8 @@ namespace CheckInSystem;
 /// </summary>
 public partial class App : Application
 {
+    void App_Startup(object sender, StartupEventArgs e)
+    {
+        CheckInSystem.Startup.Run();
+    }
 }
