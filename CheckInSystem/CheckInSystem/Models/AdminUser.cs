@@ -23,7 +23,7 @@ public class AdminUser
         }
     }
 
-    public static AdminUser Login(string username, string password)
+    public static AdminUser? Login(string username, string password)
     {
         string passwordHashQuery = @"SELECT hashedPassword FROM adminUser WHERE username = @username";
         string selectQuery = @"SELECT ID, username FROM adminUser WHERE username = @username";

@@ -5,18 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckInSystem"
         mc:Ignorable="d"
-        Title="Check In System" Height="450" Width="800">
+        Title="Check In System" Height="450" Width="800"
+        MinHeight="350"
+        MinWidth="630"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"></ColumnDefinition>
-            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="600"></ColumnDefinition>
             <ColumnDefinition Width="1*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="4*"></RowDefinition>
+            <RowDefinition Height="300"></RowDefinition>
             <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Button Grid.Column="1" Grid.Row="1"></Button>
+        
+        <Border Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+            <StackPanel>
+                <TextBlock Text="Administrations Login" FontSize="25" TextAlignment="Center"/>
+                <TextBlock Text="Brugernavn" FontSize="20" Margin="5"/>
+                <TextBox Text="{Binding Path=Username}" 
+                         FontSize="20" 
+                         Background="LightGray" 
+                         Margin="5" 
+                         BorderBrush="Black"></TextBox>
+                <TextBlock Text="Kodeord" FontSize="20" Margin="5"/>
+                <PasswordBox PasswordChanged="PasswordChanged" 
+                             FontSize="20" 
+                             Background="LightGray" 
+                             Margin="5" 
+                             BorderBrush="Black"/>
+                <Button Click="Login_clicked" Content="Login" FontSize="20"/>
+            </StackPanel>
+        </Border>
     </Grid>
 </Window>
