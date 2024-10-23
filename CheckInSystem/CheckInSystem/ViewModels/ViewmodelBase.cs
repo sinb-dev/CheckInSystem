@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using CheckInSystem.Models;
 
 namespace CheckInSystem.ViewModels;
@@ -11,11 +12,20 @@ public class ViewmodelBase : INotifyPropertyChanged
     
     public event PropertyChangedEventHandler? PropertyChanged;
 
-    protected void OnPropertyChanged(string propertyName)
+    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         if (PropertyChanged != null)
         {
             PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    protected void SetProperty<T>(ref T variable, T value, [CallerMemberName] string? propertyName = null)
+    {
+        if (!EqualityComparer<T>.Default.Equals(variable, value))
+        {
+            variable = value;
+            OnPropertyChanged(propertyName);
         }
     }
 }

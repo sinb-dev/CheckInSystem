@@ -8,25 +8,19 @@ namespace CheckInSystem.ViewModels;
 public class LoginScreenViewModel : ViewmodelBase
 {
     private string _username = "";
+
     public string Username
     {
         get => _username;
-        set
-        {
-            _username = value;
-            OnPropertyChanged("Username");
-        }
+        set => SetProperty(ref _username, value);
     }
 
     private string _password = "";
+
     public string Password
     {
-        private get => _password;
-        set
-        {
-            _password = value;
-            OnPropertyChanged("Password");
-        }
+        get => _password;
+        set => SetProperty(ref _password, value);
     }
 
     public LoginScreenViewModel()
@@ -45,8 +39,6 @@ public class LoginScreenViewModel : ViewmodelBase
         {
             //Move to Adminpanel
         }
-        
-        
     }
     
 }
