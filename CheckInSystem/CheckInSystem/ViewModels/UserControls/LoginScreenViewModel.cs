@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using CheckInSystem.Models;
 
-namespace CheckInSystem.ViewModels;
+namespace CheckInSystem.ViewModels.UserControls;
 
 public class LoginScreenViewModel : ViewmodelBase
 {

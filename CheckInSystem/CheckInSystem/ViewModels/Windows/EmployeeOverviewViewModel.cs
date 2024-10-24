@@ -1,4 +1,4 @@
-﻿namespace CheckInSystem.ViewModels;
+﻿namespace CheckInSystem.ViewModels.Windows;
 
 public class EmployeeOverviewViewModel : ViewmodelBase
 {

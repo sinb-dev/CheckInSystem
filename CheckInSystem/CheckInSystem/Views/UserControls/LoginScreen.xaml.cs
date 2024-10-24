@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using CheckInSystem.ViewModels;
+using CheckInSystem.ViewModels.UserControls;
 
 namespace CheckInSystem.Views.UserControls;
 
