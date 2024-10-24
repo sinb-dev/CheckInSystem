@@ -6,11 +6,11 @@ namespace CheckInSystem.Views;
 
 public partial class EmployeeOverview : Window
 {
-    private EmployeeOverviewViewModel mw;
+    private EmployeeOverviewViewModel vm;
     public EmployeeOverview()
     {
-        mw = new EmployeeOverviewViewModel();
-        this.DataContext = mw;
+        vm = new EmployeeOverviewViewModel();
+        this.DataContext = vm;
         InitializeComponent();
     }
 }

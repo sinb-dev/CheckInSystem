@@ -7,21 +7,21 @@ namespace CheckInSystem.Views.UserControls;
 
 public partial class LoginScreen : UserControl
 {
-    private LoginScreenViewModel mw;
+    private LoginScreenViewModel vm;
     public LoginScreen()
     {
-        mw = new LoginScreenViewModel();
-        this.DataContext = mw;
+        vm = new LoginScreenViewModel();
+        this.DataContext = vm;
         InitializeComponent();
     }
     
     private void Login_clicked(object sender, RoutedEventArgs e)
     {
-        mw.btn_test();
+        vm.btn_test();
     }
 
     private void PasswordChanged(object sender, RoutedEventArgs e)
     {
-        mw.Password = ((PasswordBox)sender).Password; 
+        vm.Password = ((PasswordBox)sender).Password; 
     }
 }
