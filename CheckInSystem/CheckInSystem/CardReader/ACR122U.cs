@@ -1,5 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Diagnostics;
+using CheckInSystem.Models;
+using CheckInSystem.ViewModels;
 using Dapper;
 using FrApp42.ACR122U;
 
@@ -48,6 +50,24 @@ public class ACR122U
         using (var connection = new SqlConnection(Database.Database.ConnectionString))
         {
             connection.Query(insertQuery, new {cardID = cardID});
+        }
+        UpdateEmployeeLocal(cardID);
+    }
+
+    private static void UpdateEmployeeLocal(string cardID)
+    {
+        Employee? employee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
+        if (employee != null)
+        {
+            employee.CardScanned();
+        }
+        else
+        {
+            var dbEmployee = Employee.GetFromCardId(cardID);
+            if (dbEmployee != null)
+            {
+                ViewmodelBase.employees.Add(dbEmployee);
+            }
         }
     }
 }
