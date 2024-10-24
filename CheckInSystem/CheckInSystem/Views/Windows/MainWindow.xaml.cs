@@ -10,29 +10,19 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CheckInSystem.ViewModels;
+using CheckInSystem.Views.UserControls;
 
 namespace CheckInSystem;
 
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class LoginScreen : Window
+public partial class MainWindow : Window
 {
-    private LoginScreenViewModel mw;
-    public LoginScreen()
+    public MainWindow()
     {
-        mw = new LoginScreenViewModel();
-        this.DataContext = mw;
         InitializeComponent();
+        MainContent.Content = new LoginScreen();
     }
 
-    private void Login_clicked(object sender, RoutedEventArgs e)
-    {
-        mw.btn_test();
-    }
-
-    private void PasswordChanged(object sender, RoutedEventArgs e)
-    {
-        mw.Password = ((PasswordBox)sender).Password; 
-    }
 }

@@ -17,7 +17,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Page Update="Views\LoginScreen.xaml">
+      <Page Update="Views\Windows\EmployeeOverview.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="Views\Windows\MainWindow.xaml">
         <Generator>MSBuild:Compile</Generator>
         <XamlRuntime>Wpf</XamlRuntime>
         <SubType>Designer</SubType>
