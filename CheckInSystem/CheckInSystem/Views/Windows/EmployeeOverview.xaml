@@ -4,6 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:CheckInSystem.Views"
+        xmlns:checkInSystem="clr-namespace:CheckInSystem"
         mc:Ignorable="d"
         Title="EmployeeOverview" Height="1080" Width="1920"
         WindowStartupLocation="Manual"
@@ -28,7 +29,8 @@
                                     <ItemContainerTemplate>
                                         <StackPanel Margin="5"
                                                     Background="Red"
-                                                    x:Name="MemberPanel">
+                                                    x:Name="MemberPanel"
+                                                    Visibility="{Binding Path=IsOffSite, Converter={x:Static checkInSystem:Converters.VisibleIfFalse}}">
                                             <StackPanel Orientation="Horizontal">
                                                 <TextBlock Text="{Binding Path=FirstName}" FontSize="15" Margin="0 0 3 0"/>
                                                 <TextBlock Text="{Binding Path=MiddleName}" FontSize="15" Margin="0 0 3 0">

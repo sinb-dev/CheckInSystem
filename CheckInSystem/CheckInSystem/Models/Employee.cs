@@ -39,7 +39,13 @@ public class Employee : INotifyPropertyChanged
         set => SetProperty(ref _lastName, value);
     }
     
-    public bool IsOffSite { get; set; }
+    private bool _isOffSite;
+    public bool IsOffSite
+    {
+        get => _isOffSite;
+        set => SetProperty(ref _isOffSite, value);
+    }
+    
     public DateTime? OffSiteUntil { get; set; }
 
     private bool _isCheckedIn;
