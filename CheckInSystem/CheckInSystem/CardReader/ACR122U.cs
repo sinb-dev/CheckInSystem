@@ -1,7 +1,10 @@
 ﻿using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows;
 using CheckInSystem.Models;
 using CheckInSystem.ViewModels;
+using CheckInSystem.ViewModels.Windows;
+using CheckInSystem.Views.Windows;
 using Dapper;
 using FrApp42.ACR122U;
 
@@ -44,9 +47,20 @@ public class ACR122U
     private static void CardScanned(string cardID)
     {
         if (cardID == "") return;
+        
+        if (State.UpdateNextEmployee)
+        {
+           UpdateNextEmployee(cardID);
+           return;
+        }
+
+        if (State.UpdateCardId)
+        {
+            UpdateCardId(cardID);
+            return;
+        }
 
         string insertQuery = "EXEC CardScanned @cardID";
-        
         using (var connection = new SqlConnection(Database.Database.ConnectionString))
         {
             connection.Query(insertQuery, new {cardID = cardID});
@@ -69,5 +83,25 @@ public class ACR122U
                 ViewmodelBase.employees.Add(dbEmployee);
             }
         }
+    }
+
+    private static void UpdateNextEmployee(string cardID)
+    {
+        State.UpdateNextEmployee = false;
+        Employee? editEmployee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
+        if (editEmployee == null)
+        {
+            CardScanned(cardID);
+            editEmployee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
+        }
+        Application.Current.Dispatcher.Invoke((Action)delegate{
+            EditEmployeeWindow editWindow = new EditEmployeeWindow(new EditEmployeeViewModel(editEmployee));
+            editWindow.Show();
+        });
+    }
+
+    private static void UpdateCardId(string cardID)
+    {
+        State.UpdateCard(cardID);
     }
 }
