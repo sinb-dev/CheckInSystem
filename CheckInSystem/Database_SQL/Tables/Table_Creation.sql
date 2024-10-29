@@ -6,7 +6,7 @@ CREATE TABLE employee(
     firstName varchar(50),
     middleName varchar(100),
     lastName varchar(50),
-    isOffSite bit,
+    isOffSite bit NOT NULL DEFAULT 0,
     offSiteUntil DATE,
 );
 
