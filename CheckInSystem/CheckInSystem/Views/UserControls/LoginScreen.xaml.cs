@@ -13,11 +13,12 @@ public partial class LoginScreen : UserControl
         vm = new LoginScreenViewModel();
         this.DataContext = vm;
         InitializeComponent();
+        KeyDown += vm.LoginKeyPressed;
     }
     
     private void Login_clicked(object sender, RoutedEventArgs e)
     {
-        vm.btn_test();
+        vm.AdminLogin();
     }
 
     private void PasswordChanged(object sender, RoutedEventArgs e)

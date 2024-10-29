@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Diagnostics;
+using System.Windows;
+using System.Windows.Input;
 using CheckInSystem.Models;
 using CheckInSystem.Views.UserControls;
 
@@ -27,7 +29,7 @@ public class LoginScreenViewModel : ViewmodelBase
         
     }
 
-    public void btn_test()
+    public void AdminLogin()
     {
         AdminUser? adminUser = AdminUser.Login(Username, Password);
         if (adminUser == null)
@@ -41,4 +43,11 @@ public class LoginScreenViewModel : ViewmodelBase
         }
     }
     
+    public void LoginKeyPressed(object sender, KeyEventArgs e)
+    {
+        if (e.Key == Key.Enter)
+        {
+            AdminLogin();
+        }
+    }
 }
