@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using CheckInSystem.Models;
+using CheckInSystem.Views.UserControls;
 
 namespace CheckInSystem.ViewModels.UserControls;
 
@@ -36,6 +37,7 @@ public class LoginScreenViewModel : ViewmodelBase
         else
         {
             //Move to Adminpanel
+            MainContentControl.Content = new AdminPanel();
         }
     }
     
