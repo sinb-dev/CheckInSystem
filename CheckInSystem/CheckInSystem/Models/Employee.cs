@@ -55,6 +55,23 @@ public class Employee : INotifyPropertyChanged
         set => SetProperty(ref _isCheckedIn, value);
     }
 
+    private DateTime? _arrivalTime;
+    public DateTime? ArrivalTime
+    {
+        get => _arrivalTime;
+        set => SetProperty(ref _arrivalTime, value);
+    }
+
+    private DateTime? _departureTime;
+
+    public DateTime? DepartureTime
+    {
+        get => _departureTime;
+        set => SetProperty(ref _departureTime, value);
+    }
+
+    
+
     
     public void CardScanned()
     {
@@ -63,16 +80,13 @@ public class Employee : INotifyPropertyChanged
     
     public static List<Employee> GetAllEmployees()
     {
-        string selectQuery = @"SELECT 
-            id, 
-            cardid, 
-            firstname, 
-            middlename, 
-            lastname, 
-            isoffsite, 
-            offsiteuntil, 
-            [dbo].[IsEmployeeCheckedIn](ID) as IsCheckedIn
-            FROM employee";
+        string selectQuery = @"SELECT employee.ID, cardid, firstname, middlename, lastname, isoffsite, offsiteuntil, arrivaltime, departuretime
+            FROM employee
+            LEFT JOIN dbo.onSiteTime on onSiteTime.ID = (
+            SELECT TOP (1) ID 
+            FROM OnSiteTime
+            WHERE employee.ID = OnSiteTime.employeeID
+            ORDER BY arrivalTime DESC)";
         using (var connection = new SqlConnection(Database.ConnectionString))
         {
             var employees = connection.Query<Employee>(selectQuery).ToList();
@@ -82,16 +96,13 @@ public class Employee : INotifyPropertyChanged
 
     public static Employee? GetFromCardId(string cardID)
     {
-        string selectQuery = @"SELECT 
-            id, 
-            cardid, 
-            firstname, 
-            middlename, 
-            lastname, 
-            isoffsite, 
-            offsiteuntil, 
-            [dbo].[IsEmployeeCheckedIn](ID) as IsCheckedIn
+        string selectQuery = @"SELECT employee.ID, cardid, firstname, middlename, lastname, isoffsite, offsiteuntil, arrivaltime, departuretime
             FROM employee
+            LEFT JOIN dbo.onSiteTime on onSiteTime.ID = (
+            SELECT TOP (1) ID 
+            FROM OnSiteTime
+            WHERE employee.ID = OnSiteTime.employeeID
+            ORDER BY arrivalTime DESC)
             WHERE cardID = @cardID";
         using (var connection = new SqlConnection(Database.ConnectionString))
         {
