@@ -1,9 +1,7 @@
 ﻿using System.Data.SqlClient;
 using System.Diagnostics;
-using System.Windows;
 using CheckInSystem.Models;
 using CheckInSystem.ViewModels;
-using CheckInSystem.ViewModels.Windows;
 using CheckInSystem.Views.Windows;
 using Dapper;
 using FrApp42.ACR122U;
@@ -94,10 +92,7 @@ public class ACR122U
             CardScanned(cardID);
             editEmployee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
         }
-        Application.Current.Dispatcher.Invoke((Action)delegate{
-            EditEmployeeWindow editWindow = new EditEmployeeWindow(new EditEmployeeViewModel(editEmployee));
-            editWindow.Show();
-        });
+        EditEmployeeWindow.Open(editEmployee);
     }
 
     private static void UpdateCardId(string cardID)
