@@ -73,7 +73,7 @@ public class ACR122U
         Employee? employee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
         if (employee != null)
         {
-            employee.CardScanned();
+            employee.CardScanned(cardID);
         }
         else
         {

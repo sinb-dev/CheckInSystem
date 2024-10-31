@@ -73,14 +73,19 @@ public class Employee : INotifyPropertyChanged
     
 
     
-    public void CardScanned()
+    public void CardScanned(string cardID)
     {
-        IsCheckedIn = !IsCheckedIn;
+        Employee? tempEmployee = GetFromCardId(cardID);
+        if (tempEmployee == null) return;
+        ArrivalTime = tempEmployee.ArrivalTime;
+        DepartureTime = tempEmployee.DepartureTime;
+        IsCheckedIn = tempEmployee.IsCheckedIn;
     }
     
     public static List<Employee> GetAllEmployees()
     {
-        string selectQuery = @"SELECT employee.ID, cardid, firstname, middlename, lastname, isoffsite, offsiteuntil, arrivaltime, departuretime
+        string selectQuery = @"SELECT employee.ID, cardid, firstname, middlename, lastname, isoffsite, offsiteuntil, arrivaltime, departuretime,
+            [dbo].[IsEmployeeCheckedIn](employee.ID) as IsCheckedIn
             FROM employee
             LEFT JOIN dbo.onSiteTime on onSiteTime.ID = (
             SELECT TOP (1) ID 
@@ -96,7 +101,8 @@ public class Employee : INotifyPropertyChanged
 
     public static Employee? GetFromCardId(string cardID)
     {
-        string selectQuery = @"SELECT employee.ID, cardid, firstname, middlename, lastname, isoffsite, offsiteuntil, arrivaltime, departuretime
+        string selectQuery = @"SELECT employee.ID, cardid, firstname, middlename, lastname, isoffsite, offsiteuntil, arrivaltime, departuretime,
+            [dbo].[IsEmployeeCheckedIn](employee.ID) as IsCheckedIn
             FROM employee
             LEFT JOIN dbo.onSiteTime on onSiteTime.ID = (
             SELECT TOP (1) ID 
