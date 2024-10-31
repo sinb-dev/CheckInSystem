@@ -17,15 +17,15 @@
                        Margin="0 0 0 20"/>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                 <TextBlock Text="Fornavn" Width="80"/>
-                <TextBox Width="175" Text="{Binding Path=EditEmployee.FirstName}"/>
+                <TextBox Width="175" Text="{Binding Path=EditEmployee.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                 <TextBlock Text="Mellemnavn" Width="80"/>
-                <TextBox Width="175" Text="{Binding Path=EditEmployee.MiddleName}"/>
+                <TextBox Width="175" Text="{Binding Path=EditEmployee.MiddleName, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
                 <TextBlock Text="Efternavn" Width="80"/>
-                <TextBox Width="175" Text="{Binding Path=EditEmployee.LastName}"/>
+                <TextBox Width="175" Text="{Binding Path=EditEmployee.LastName, UpdateSourceTrigger=PropertyChanged}"/>
             </StackPanel>
             <Button Content="Opdater Kort" Click="UpdateCardId"/>
             <TextBlock Name="UpdateCardMessage" 

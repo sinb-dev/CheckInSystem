@@ -28,12 +28,7 @@ public class EditEmployeeViewModel : ViewmodelBase
     {
         this.PropertyChanged -= UpdateWaitingForCard;
         CardReader.State.ClearUpdateCard();
-        //Starts a new thread and waits 0.1 second because this event happens before the selected textbox is saved on close
-        new Task(() =>
-        {
-            Thread.Sleep(100);
-            EditEmployee.UpdateDb();
-        }).Start();
+        EditEmployee.UpdateDb();
     }
 
     public void UpdateCardId()
