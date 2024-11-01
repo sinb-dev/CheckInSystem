@@ -33,4 +33,9 @@ public class AdminPanelViewModel : ViewmodelBase
     {
         MainContentControl.Content = new LoginScreen();
     }
+
+    public void EditNextScannedCard()
+    {
+        CardReader.State.UpdateNextEmployee = true;
+    }
 }
