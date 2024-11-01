@@ -63,15 +63,11 @@ public class Employee : INotifyPropertyChanged
     }
 
     private DateTime? _departureTime;
-
     public DateTime? DepartureTime
     {
         get => _departureTime;
         set => SetProperty(ref _departureTime, value);
     }
-
-    
-
     
     public void CardScanned(string cardID)
     {

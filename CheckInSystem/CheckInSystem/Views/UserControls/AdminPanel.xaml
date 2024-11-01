@@ -8,9 +8,43 @@
              d:DesignHeight="330" d:DesignWidth="630">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
         <StackPanel Background="Gold"></StackPanel>
+        <StackPanel Grid.Row="1" Background="Blue" Orientation="Horizontal">
+            <ComboBox x:Name="SelectedGroup" 
+                      ItemsSource="{Binding Path=Groups}"
+                      DisplayMemberPath="Name"
+                      SelectedItem="{Binding UpdateEmployeesControl}"
+                      Width="150"
+                      FontSize="15"/>
+            <Button Content="Alle Brugere"
+                    Click="BtnResetGroup"
+                    Margin="10 0 0 0"
+                    FontSize="14"/>
+            
+        </StackPanel>
+        <Button Content="Log ud" 
+                Click="BtnLogOut"
+                Grid.Row="1"
+                HorizontalAlignment="Right"
+                Margin="0 0 5 0"
+                FontSize="14"/>
+        <ContentControl Grid.Row="2" x:Name="EmployeesControl"/>
+        <StackPanel Grid.Row="3" Background="Gold" Orientation="Horizontal">
+            <Button Content="Tilføj/Fjern valgte brugere fra gruppe"
+                    Click="BtnEditGroupsForEmployees"/>
+            <Button Content="Markere valgte brugere som orlov"
+                    Click="BtnEditOffsiteForEmployees"/>
+            <Button Content="Slet valgte brugere"
+                    Click="BtnDeleteEmployees"/>
+        </StackPanel>
+        <Button Content="Skift til grupper" 
+                Click="BtnSwitchToGroups"
+                Grid.Row="3" 
+                HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>
