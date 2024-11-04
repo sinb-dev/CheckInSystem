@@ -30,7 +30,7 @@ public partial class AdminGroupView : UserControl
     {
         Button checkBox = (Button)sender;
         Group group = (Group)checkBox.DataContext;
-        InputDialog input = new InputDialog("Indtast navn til gruppen");
+        InputDialog input = new InputDialog("Indtast nyt navn til gruppen", group.Name);
         if (input.ShowDialog() == true)
         {
             if (input.Answer != "")
