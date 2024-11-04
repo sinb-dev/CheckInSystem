@@ -7,7 +7,21 @@
              mc:Ignorable="d"
              d:DesignHeight="300" d:DesignWidth="630">
     <Grid>
-        <ScrollViewer>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Background="Blue" Orientation="Horizontal">
+            
+        </StackPanel>
+        <Button Content="Log ud" 
+                Click="BtnLogOut"
+                Grid.Row="0"
+                HorizontalAlignment="Right"
+                Margin="0 0 5 0"
+                FontSize="14"/>
+        <ScrollViewer Grid.Row="1">
             <ItemsControl ItemsSource="{Binding Groups}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -16,12 +30,25 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <ItemContainerTemplate>
-                        <StackPanel>
-                            
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding Path=Name}"/>
+                            <StackPanel Orientation="Horizontal" Margin="10 0 0 0">
+                                <TextBlock Text="Antal medlemmer: "/>
+                                <TextBlock Text="{Binding Members.Count}"/>
+                            </StackPanel>
+                            <Button Content="Rediger Navn" Click="BtnEditName"/>
+                            <Button Content="Slet" Click="BtnDeleteGroup"/>
                         </StackPanel>
                     </ItemContainerTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        <StackPanel Grid.Row="2" Background="Gold" Orientation="Horizontal">
+            <Button Content="Opret ny gruppe" Click="BtnCreateGroup"/>
+        </StackPanel>
+        <Button Content="Skift til arbejdere"
+                Click="BtnSwitchToGroups"
+                Grid.Row="2" 
+                HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>
