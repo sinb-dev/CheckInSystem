@@ -1,14 +1,23 @@
 ﻿using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Runtime.CompilerServices;
 using Dapper;
 
 namespace CheckInSystem.Models;
 
-public class Group
+public class Group : INotifyPropertyChanged
 {
     public int ID { get; private set; }
-    public string Name { get; private set; }
+    
+    private string _name;
+    public string Name
+    {
+        get => _name;
+        set => SetProperty(ref _name, value);
+    }
+    
     public ObservableCollection<Employee> Members { get; private set; }
 
     public static List<Group> GetAllGroups(List<Employee> employees)
@@ -28,7 +37,6 @@ public class Group
 
                 foreach (var employeeID in employeeIDs)
                 {
-                    //group.Members.Add(employees.Where(i => i.ID == employeeID).FirstOrDefault());
                     var temp = employees.Where(i => i.ID == employeeID).FirstOrDefault();
                     if (temp != null)
                     {
@@ -99,5 +107,24 @@ public class Group
         }
 
         this.Members.Remove(employee);
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+
+    protected void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+    {
+        if (PropertyChanged != null)
+        {
+            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    protected void SetProperty<T>(ref T variable, T value, [CallerMemberName] string? propertyName = null)
+    {
+        if (!EqualityComparer<T>.Default.Equals(variable, value))
+        {
+            variable = value;
+            OnPropertyChanged(propertyName);
+        }
     }
 }
