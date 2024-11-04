@@ -41,7 +41,7 @@ public partial class AdminPanel : UserControl
 
     private void BtnSwitchToGroups(object sender, RoutedEventArgs e)
     {
-        //TODO: switch to groups edit panel
+        vm.SwitchToGroups();
     }
 
     private void BtnEditScannedCard(object sender, RoutedEventArgs e)
