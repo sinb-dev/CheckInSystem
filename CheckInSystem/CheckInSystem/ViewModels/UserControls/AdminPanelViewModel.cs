@@ -14,7 +14,7 @@ public class AdminPanelViewModel : ViewmodelBase
         {
             if (value == null)
             {
-                EmployeesControl.Content = new AdminEmployeeView(employees);
+                EmployeesControl.Content = new AdminEmployeeView(Employees);
             }
             else
             {
@@ -26,7 +26,7 @@ public class AdminPanelViewModel : ViewmodelBase
     public AdminPanelViewModel(ContentControl contentControl)
     {
         EmployeesControl = contentControl;
-        EmployeesControl.Content = new AdminEmployeeView(employees);
+        EmployeesControl.Content = new AdminEmployeeView(Employees);
     }
 
     public void Logout()
@@ -37,5 +37,10 @@ public class AdminPanelViewModel : ViewmodelBase
     public void EditNextScannedCard()
     {
         CardReader.State.UpdateNextEmployee = true;
+    }
+
+    public void SwitchToGroups()
+    {
+        MainContentControl.Content = new AdminGroupView();
     }
 }
