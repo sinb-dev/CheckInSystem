@@ -8,13 +8,11 @@
              d:DesignHeight="330" d:DesignWidth="630">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="30"/>
         </Grid.RowDefinitions>
-        <StackPanel Background="Gold"></StackPanel>
-        <StackPanel Grid.Row="1" Background="Blue" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Background="Blue" Orientation="Horizontal">
             <ComboBox x:Name="SelectedGroup" 
                       ItemsSource="{Binding Path=Groups}"
                       DisplayMemberPath="Name"
@@ -33,12 +31,12 @@
         </StackPanel>
         <Button Content="Log ud" 
                 Click="BtnLogOut"
-                Grid.Row="1"
+                Grid.Row="0"
                 HorizontalAlignment="Right"
                 Margin="0 0 5 0"
                 FontSize="14"/>
-        <ContentControl Grid.Row="2" x:Name="EmployeesControl"/>
-        <StackPanel Grid.Row="3" Background="Gold" Orientation="Horizontal">
+        <ContentControl Grid.Row="1" x:Name="EmployeesControl"/>
+        <StackPanel Grid.Row="2" Background="Gold" Orientation="Horizontal">
             <Button Content="Tilføj/Fjern valgte brugere fra gruppe"
                     Click="BtnEditGroupsForEmployees"/>
             <Button Content="Markere valgte brugere som orlov"
@@ -48,7 +46,7 @@
         </StackPanel>
         <Button Content="Skift til grupper" 
                 Click="BtnSwitchToGroups"
-                Grid.Row="3" 
+                Grid.Row="2" 
                 HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>
