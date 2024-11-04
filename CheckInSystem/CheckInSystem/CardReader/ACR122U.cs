@@ -68,7 +68,7 @@ public class ACR122U
 
     private static void UpdateEmployeeLocal(string cardID)
     {
-        Employee? employee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
+        Employee? employee = ViewmodelBase.Employees.Where(e => e.CardID == cardID).FirstOrDefault();
         if (employee != null)
         {
             employee.CardScanned(cardID);
@@ -78,7 +78,7 @@ public class ACR122U
             var dbEmployee = Employee.GetFromCardId(cardID);
             if (dbEmployee != null)
             {
-                ViewmodelBase.employees.Add(dbEmployee);
+                ViewmodelBase.Employees.Add(dbEmployee);
             }
         }
     }
@@ -86,11 +86,11 @@ public class ACR122U
     private static void UpdateNextEmployee(string cardID)
     {
         State.UpdateNextEmployee = false;
-        Employee? editEmployee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
+        Employee? editEmployee = ViewmodelBase.Employees.Where(e => e.CardID == cardID).FirstOrDefault();
         if (editEmployee == null)
         {
             CardScanned(cardID);
-            editEmployee = ViewmodelBase.employees.Where(e => e.CardID == cardID).FirstOrDefault();
+            editEmployee = ViewmodelBase.Employees.Where(e => e.CardID == cardID).FirstOrDefault();
         }
         EditEmployeeWindow.Open(editEmployee);
     }

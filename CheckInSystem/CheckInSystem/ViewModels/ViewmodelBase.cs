@@ -8,7 +8,7 @@ namespace CheckInSystem.ViewModels;
 
 public class ViewmodelBase : INotifyPropertyChanged
 {
-    public static ObservableCollection<Employee> employees { get; set; }
+    public static ObservableCollection<Employee> Employees { get; set; }
     public static ObservableCollection<Group> Groups { get; set; }
     
     public static ContentControl MainContentControl { get; set; }
