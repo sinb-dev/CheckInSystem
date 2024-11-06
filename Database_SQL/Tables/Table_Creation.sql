@@ -45,3 +45,5 @@ CREATE TABLE adminUser(
     username VARCHAR(20) NOT NULL UNIQUE,
     hashedPassword VARCHAR(60) NOT NULL,
 );
+
+-- TODO: 

@@ -21,8 +21,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore CheckInSystem/CheckInSystem.sln /p:EnableWindowsTargeting=true
+      run: dotnet restore CheckInSystem.sln /p:EnableWindowsTargeting=true
     - name: Build
-      run: dotnet build CheckInSystem/CheckInSystem.sln /p:EnableWindowsTargeting=true --no-restore
+      run: dotnet build CheckInSystem.sln /p:EnableWindowsTargeting=true --no-restore
     #- name: Test
     #  run: dotnet test --no-build --verbosity normal
