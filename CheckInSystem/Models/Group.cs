@@ -89,6 +89,8 @@ public class Group : INotifyPropertyChanged
     
     public void AddEmployee(Employee employee)
     {
+        if (Members.Contains(employee)) return;
+        
         string insertQuery = @"INSERT INTO employeeGroup (employeeID, groupID) VALUES (@employeeID, @groupID)";
 
         using (var connection = new SqlConnection(Database.Database.ConnectionString))
@@ -100,6 +102,8 @@ public class Group : INotifyPropertyChanged
 
     public void RemoveEmployee(Employee employee)
     {
+        if (!Members.Contains(employee)) return;
+        
         string deletionQuery = @"DELETE employeeGroup WHERE employeeID = @employeeID AND groupID = @groupID";
         using (var connection = new SqlConnection(Database.Database.ConnectionString))
         {

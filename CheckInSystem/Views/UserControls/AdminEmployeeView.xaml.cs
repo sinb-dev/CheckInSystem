@@ -43,7 +43,7 @@ public partial class AdminEmployeeView : UserControl
     {
         CheckBox checkBox = (CheckBox)sender;
         Employee employee = (Employee)checkBox.DataContext;
-        vm.SelectedEmployees.Add(employee);
+        AdminEmployeeViewModel.SelectedEmployees.Add(employee);
         Debug.WriteLine($"{employee.FirstName} Checked");
     }
 
@@ -51,7 +51,7 @@ public partial class AdminEmployeeView : UserControl
     {
         CheckBox checkBox = (CheckBox)sender;
         Employee employee = (Employee)checkBox.DataContext;
-        vm.SelectedEmployees.Remove(employee);
+        AdminEmployeeViewModel.SelectedEmployees.Remove(employee);
         Debug.WriteLine($"{employee.FirstName} Unchecked");
     }
 }

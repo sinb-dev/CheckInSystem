@@ -20,9 +20,9 @@
         <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,15,0,0">
             <Button IsDefault="True"
                     Content="Bekræft"
-                    Name="btnDialogOk" 
-                    Click="btnDialogOk_Click" 
-                    MinWidth="60" 
+                    Name="btnDialogOk"
+                    Click="btnDialogOk_Click"
+                    MinWidth="60"
                     Margin="0,0,10,0"/>
             <Button IsCancel="True" MinWidth="60" Content="Annuller"/>
         </WrapPanel>

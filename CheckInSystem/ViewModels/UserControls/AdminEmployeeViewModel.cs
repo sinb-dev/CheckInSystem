@@ -7,7 +7,7 @@ namespace CheckInSystem.ViewModels.UserControls;
 public class AdminEmployeeViewModel : ViewmodelBase
 {
     public ObservableCollection<Employee> SelectedEmployeeGroup { get; set; }
-    public ObservableCollection<Employee> SelectedEmployees { get; set; }
+    public static ObservableCollection<Employee> SelectedEmployees { get; set; }
     
     public AdminEmployeeViewModel(ObservableCollection<Employee> employees)
     {
