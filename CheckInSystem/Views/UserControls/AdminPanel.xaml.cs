@@ -49,7 +49,12 @@ public partial class AdminPanel : UserControl
 
     private void BtnDeleteEmployees(object sender, RoutedEventArgs e)
     {
-        vm.DeleteEmployee(AdminEmployeeViewModel.SelectedEmployees);
+        MessageBoxResult messageBoxResult = MessageBox.Show("Er du sikker på at du vil slette de valgte brugere.", "Sletning", MessageBoxButton.OKCancel);
+        if (messageBoxResult == MessageBoxResult.OK)
+        {
+            vm.DeleteEmployee(AdminEmployeeViewModel.SelectedEmployees);
+            AdminEmployeeViewModel.SelectedEmployees.Clear();
+        }
     }
 
     private void BtnSwitchToGroups(object sender, RoutedEventArgs e)
