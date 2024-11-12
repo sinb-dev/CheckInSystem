@@ -14,7 +14,7 @@
         <ItemsControl ItemsSource="{Binding Groups}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
+                    <StackPanel Visibility="{Binding Path=Isvisible, Converter={x:Static checkInSystem:Converters.VisibleIfTrue}}">
                         <TextBlock Text="{Binding Path=Name}" 
                                    FontSize="50"
                                    Margin="20 0 0 5 "/>

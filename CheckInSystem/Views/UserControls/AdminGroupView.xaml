@@ -36,6 +36,10 @@
                                 <TextBlock Text="Antal medlemmer: "/>
                                 <TextBlock Text="{Binding Members.Count}"/>
                             </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="Synlig"/>
+                                <CheckBox IsChecked="{Binding Path=Isvisible}"/>
+                            </StackPanel>
                             <Button Content="Rediger Navn" Click="BtnEditName"/>
                             <Button Content="Slet" Click="BtnDeleteGroup"/>
                         </StackPanel>

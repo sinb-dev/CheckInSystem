@@ -17,6 +17,13 @@ public class Group : INotifyPropertyChanged
         get => _name;
         set => SetProperty(ref _name, value);
     }
+
+    private bool _isvisible;
+    public bool Isvisible
+    {
+        get => _isvisible;
+        set => SetProperty(ref _isvisible, value);
+    }
     
     public ObservableCollection<Employee> Members { get; private set; }
 

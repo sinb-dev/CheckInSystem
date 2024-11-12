@@ -16,6 +16,7 @@ CREATE TABLE [group]
 (
     ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     name varchar(50) NOT NULL,
+    isvisible bit NOT NULL DEFAULT 0
 );
 
 USE CheckInSystem
