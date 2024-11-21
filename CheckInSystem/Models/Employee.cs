@@ -113,6 +113,27 @@ public class Employee : INotifyPropertyChanged
         }
     }
 
+    public void GetUpdatedSiteTimes()
+    {
+        string selectQuery = @"Select TOP(1) * FROM onSiteTime
+                        WHERE employeeID = @ID
+                        ORDER BY arrivalTime desc";
+        try
+        {
+            using (var connection = new SqlConnection(Database.ConnectionString))
+            {
+                var siteTime = connection.QuerySingle<OnSiteTime>(selectQuery, this);
+                ArrivalTime = siteTime.ArrivalTime;
+                DepartureTime = siteTime.DepartureTime;
+            }
+        }
+        catch (Exception e)
+        {
+            ArrivalTime = null;
+            DepartureTime = null;
+        }
+    }
+
     public void UpdateDb()
     {
         string updateQuery = @"
