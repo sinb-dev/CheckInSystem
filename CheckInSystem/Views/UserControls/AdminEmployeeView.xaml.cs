@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
 using CheckInSystem.Models;
+using CheckInSystem.ViewModels;
 using CheckInSystem.ViewModels.UserControls;
 
 namespace CheckInSystem.Views.UserControls;
@@ -29,7 +30,8 @@ public partial class AdminEmployeeView : UserControl
     {
         Button button = (Button)sender;
         Employee employee = (Employee)button.DataContext;
-        //TODO: Open EmployeeTime
+        EmployeeTimeView timeView = new EmployeeTimeView(employee);
+        ViewmodelBase.MainContentControl.Content = timeView;
     }
 
     private void BtnEditEmployeeGroup(object sender, RoutedEventArgs e)
