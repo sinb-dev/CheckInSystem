@@ -1,4 +1,7 @@
-﻿USE CheckInSystem
+﻿CREATE DATABASE CheckInSystem
+GO
+
+USE CheckInSystem
 GO
 CREATE TABLE employee(
     ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
@@ -46,5 +49,3 @@ CREATE TABLE adminUser(
     username VARCHAR(20) NOT NULL UNIQUE,
     hashedPassword VARCHAR(60) NOT NULL,
 );
-
--- TODO: 

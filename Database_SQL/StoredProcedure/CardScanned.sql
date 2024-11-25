@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE CardScanned @cardID char(11) AS
+﻿USE CheckInSystem
+GO
+CREATE PROCEDURE CardScanned @cardID char(11) AS
 BEGIN 
     IF NOT EXISTS(SELECT * FROM employee WHERE cardID = @cardID) 
     BEGIN

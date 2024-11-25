@@ -1,4 +1,6 @@
-﻿CREATE FUNCTION IsEmployeeCheckedIn (@EmployeeID INT) RETURNS BIT
+﻿USE CheckInSystem
+GO
+CREATE FUNCTION IsEmployeeCheckedIn (@EmployeeID INT) RETURNS BIT
 AS 
 BEGIN 
     DECLARE @IsCheckedIn BIT;

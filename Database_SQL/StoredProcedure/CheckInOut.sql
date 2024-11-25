@@ -1,4 +1,6 @@
-﻿CREATE PROCEDURE CheckInOut @cardID char(11) AS
+﻿USE CheckInSystem
+GO
+CREATE PROCEDURE CheckInOut @cardID char(11) AS
 DECLARE @employeeID INT;
 BEGIN 
     SET @employeeID = (SELECT ID FROM employee WHERE cardID = @cardID)
