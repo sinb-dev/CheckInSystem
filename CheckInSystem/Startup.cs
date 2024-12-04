@@ -17,8 +17,8 @@ public class Startup
         ViewmodelBase.Employees = new ObservableCollection<Employee>(Employee.GetAllEmployees());
         ViewmodelBase.Groups =
             new ObservableCollection<Group>(Group.GetAllGroups(new List<Employee>(ViewmodelBase.Employees)));
-        Debug.WriteLine(AdminUser.Login("test", "123").Username);
         OpenEmployeeOverview();
+        AddAdmin();
     }
 
     private static void OpenEmployeeOverview()
@@ -37,5 +37,14 @@ public class Startup
             employeeOverview.Width = screen.Bounds.Width;
         }
         employeeOverview.Show();
+    }
+
+    private static void AddAdmin()
+    {
+        var admins = AdminUser.GetAdminUsers();
+        if (admins.Count == 0)
+        {
+            AdminUser.CreateUser("sko", "test123");
+        }
     }
 }
