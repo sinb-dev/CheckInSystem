@@ -8,7 +8,7 @@ namespace CheckInSystem.ViewModels.UserControls;
 
 public class LoginScreenViewModel : ViewmodelBase
 {
-    private string _username = "test";
+    private string _username = "";
 
     public string Username
     {
@@ -16,7 +16,7 @@ public class LoginScreenViewModel : ViewmodelBase
         set => SetProperty(ref _username, value);
     }
 
-    private string _password = "123";
+    private string _password = "";
 
     public string Password
     {
