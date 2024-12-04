@@ -58,4 +58,11 @@ public partial class AdminGroupView : UserControl
             }
         }
     }
+
+    private void UpdateVisibility(object sender, RoutedEventArgs e)
+    {
+        CheckBox checkBox = (CheckBox)sender;
+        Group group = (Group)checkBox.DataContext;
+        group.Updatevisibility(group.Isvisible);
+    }
 }

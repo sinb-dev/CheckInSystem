@@ -38,7 +38,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="Synlig"/>
-                                <CheckBox IsChecked="{Binding Path=Isvisible}"/>
+                                <CheckBox IsChecked="{Binding Path=Isvisible}" Click="UpdateVisibility"/>
                             </StackPanel>
                             <Button Content="Rediger Navn" Click="BtnEditName"/>
                             <Button Content="Slet" Click="BtnDeleteGroup"/>

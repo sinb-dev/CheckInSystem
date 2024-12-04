@@ -93,6 +93,17 @@ public class Group : INotifyPropertyChanged
 
         this.Name = name;
     }
+
+    public void Updatevisibility(bool visibility)
+    {
+        string updateQuery = @"UPDATE [group] 
+            SET isvisible = @isvisible
+            WHERE ID = @ID";
+        using (var connection = new SqlConnection(Database.Database.ConnectionString))
+        {
+            connection.Query(updateQuery, new {isvisible = Isvisible, ID = this.ID});
+        }
+    }
     
     public void AddEmployee(Employee employee)
     {
