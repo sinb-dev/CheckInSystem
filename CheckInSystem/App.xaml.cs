@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Windows;
 
 namespace CheckInSystem;
@@ -12,6 +13,27 @@ public partial class App : Application
 {
     void App_Startup(object sender, StartupEventArgs e)
     {
-        CheckInSystem.Startup.Run();
+        AppDomain.CurrentDomain.UnhandledException += log;
+        try
+        {
+            CheckInSystem.Startup.Run();
+        }
+        catch (Exception exception)
+        {
+            Logger.LogError(exception);
+            throw;
+        }
     }
+
+    private static void log(object sender, UnhandledExceptionEventArgs e)
+    {
+        string filePath = Environment.ExpandEnvironmentVariables(@"%AppData%\checkInSystem");
+        if (!Directory.Exists(filePath))
+        {
+            Directory.CreateDirectory(filePath);
+        }
+        filePath += @"\log.txt";
+        File.AppendAllText(filePath, $"At {DateTime.Now} {e}\r\n");
+    }
+    
 }

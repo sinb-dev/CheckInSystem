@@ -34,7 +34,14 @@ public class ACR122U
     private static async void OnCardInserted(string uid)
     {
         Debug.WriteLine($"New card detected : {uid}");
-        CardScanned(uid);
+        try
+        {
+            CardScanned(uid);
+        }
+        catch (Exception e)
+        {
+            Logger.LogError(e);
+        }
     }
 
     private static void OnCardRemoved()
