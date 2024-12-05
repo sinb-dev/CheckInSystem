@@ -1,5 +1,6 @@
 ﻿using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Windows;
 using CheckInSystem.Models;
 using CheckInSystem.ViewModels;
 using CheckInSystem.Views.Windows;
@@ -85,7 +86,9 @@ public class ACR122U
             var dbEmployee = Employee.GetFromCardId(cardID);
             if (dbEmployee != null)
             {
-                ViewmodelBase.Employees.Add(dbEmployee);
+                Application.Current.Dispatcher.Invoke( () => {
+                    ViewmodelBase.Employees.Add(dbEmployee);
+                });
             }
         }
     }

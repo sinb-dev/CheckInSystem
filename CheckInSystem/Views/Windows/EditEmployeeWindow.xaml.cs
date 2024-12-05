@@ -23,7 +23,7 @@ public partial class EditEmployeeWindow : Window
 
     public static void Open(Employee employee)
     {
-        Application.Current.Dispatcher.Invoke((Action)delegate{
+        Application.Current.Dispatcher.Invoke( () => {
             EditEmployeeWindow editWindow = new EditEmployeeWindow(new EditEmployeeViewModel(employee));
             editWindow.Show();
         });
