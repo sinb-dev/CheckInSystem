@@ -22,11 +22,11 @@
             <Button Content="Alle Brugere"
                     Click="BtnResetGroup"
                     Margin="10 0 0 0"
-                    FontSize="14"/>
+                    FontSize="15"/>
             <Button Content="Rediger næste scannet kort"
                     Click="BtnEditScannedCard"
                     Margin="10 0 0 0"
-                    FontSize="14"/>
+                    FontSize="15"/>
             
         </StackPanel>
         <Button Content="Log ud" 
@@ -34,19 +34,23 @@
                 Grid.Row="0"
                 HorizontalAlignment="Right"
                 Margin="0 0 5 0"
-                FontSize="14"/>
+                FontSize="15"/>
         <ContentControl Grid.Row="1" x:Name="EmployeesControl"/>
         <StackPanel Grid.Row="2" Background="Gold" Orientation="Horizontal">
             <Button Content="Tilføj/Fjern valgte brugere fra gruppe"
-                    Click="BtnEditGroupsForEmployees"/>
+                    Click="BtnEditGroupsForEmployees"
+                    FontSize="15"/>
             <Button Content="Markere valgte brugere som orlov"
-                    Click="BtnEditOffsiteForEmployees"/>
+                    Click="BtnEditOffsiteForEmployees"
+                    FontSize="15"/>
             <Button Content="Slet valgte brugere"
-                    Click="BtnDeleteEmployees"/>
+                    Click="BtnDeleteEmployees"
+                    FontSize="15"/>
         </StackPanel>
         <Button Content="Skift til grupper" 
                 Click="BtnSwitchToGroups"
-                Grid.Row="2" 
+                Grid.Row="2"
+                FontSize="15"
                 HorizontalAlignment="Right"/>
     </Grid>
 </UserControl>

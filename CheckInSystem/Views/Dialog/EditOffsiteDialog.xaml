@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:CheckInSystem.Views.Windows"
         mc:Ignorable="d"
-        Title="EditOffsite" Height="200" Width="230"
+        Title="EditOffsite" Height="150" Width="260"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
@@ -25,6 +25,9 @@
                         Margin="0,0,10,0"/>
                 <Button IsCancel="True" MinWidth="60" Content="Annuller"/>
             </StackPanel>
+            <StackPanel.LayoutTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+            </StackPanel.LayoutTransform>
         </StackPanel>
     </Grid>
 </Window>

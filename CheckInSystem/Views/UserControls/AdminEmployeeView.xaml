@@ -8,7 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="630">
     <Grid>
         <ScrollViewer>
-            <ItemsControl ItemsSource="{Binding SelectedEmployeeGroup}" x:Name="IcSelectedGroup">
+            <ItemsControl ItemsSource="{Binding SelectedEmployeeGroup}" x:Name="IcSelectedGroup" AlternationCount="2">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <StackPanel Orientation="Vertical"/>
@@ -16,32 +16,51 @@
                 </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <ItemContainerTemplate>
-                        <StackPanel Orientation="Horizontal" x:Name="SpSelectedGroup">
-                            <TextBlock Text="{Binding Path=FirstName}" FontSize="15" Margin="0 0 3 0"/>
-                            <TextBlock Text="{Binding Path=MiddleName}" FontSize="15" Margin="0 0 3 0">
-                                <TextBlock.Style>
-                                    <Style TargetType="TextBlock">
-                                        <Style.Triggers>
-                                            <Trigger Property="Text" Value="">
-                                                <Setter Property="Visibility" Value="Collapsed"/>
-                                            </Trigger>
-                                        </Style.Triggers>
-                                    </Style>
-                                </TextBlock.Style>
-                            </TextBlock>
-                            <TextBlock Text="{Binding Path=LastName}" FontSize="15" Margin="0 0 0 0"/>
-                            <TextBlock Text="{Binding Path=ArrivalTime}"/>
-                            <TextBlock Text="{Binding Path=DepartureTime}"/>
-                            <Button Content="Rediger" Click="BtnOpenEmployeeEdit"/>
-                            <Button Content="Se tid" Click="BtnSeeEmployeeTime"/>
-                            <Button Content="Ændre Grupper" Click="BtnEditEmployeeGroup"/>
-                            <CheckBox Checked="CbSelected" Unchecked="CbUnSelected"/>
-                        </StackPanel>
+                        <Border BorderThickness="0 0 0 2" BorderBrush="Black" x:Name="BSelectedGroup">
+                            <StackPanel Orientation="Horizontal" x:Name="SpSelectedGroup" Margin="0 2 0 2">
+                                <CheckBox Checked="CbSelected" Unchecked="CbUnSelected" VerticalAlignment="Center">
+                                    <CheckBox.LayoutTransform>
+                                        <ScaleTransform ScaleX="2" ScaleY="2"/>
+                                    </CheckBox.LayoutTransform>
+                                </CheckBox>
+                                <StackPanel Orientation="Horizontal" Width="500">
+                                    <TextBlock Text="{Binding Path=FirstName}" FontSize="30" Margin="0 0 7 0"/>
+                                    <TextBlock Text="{Binding Path=MiddleName}" FontSize="30" Margin="0 0 7 0">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Style.Triggers>
+                                                    <Trigger Property="Text" Value="">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                    </Trigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock> 
+                                    <TextBlock Text="{Binding Path=LastName}" FontSize="30" Margin="0 0 0 0"/>
+                                </StackPanel>
+                                <Button Content="Rediger" 
+                                        Click="BtnOpenEmployeeEdit" 
+                                        FontSize="25"
+                                        Margin="5"/>
+                                <Button Content="Se tider" 
+                                        Click="BtnSeeEmployeeTime" 
+                                        FontSize="25"
+                                        Margin="5"/>
+                                <Button Content="Ændre Grupper" 
+                                        Click="BtnEditEmployeeGroup"
+                                        FontSize="25"
+                                        Margin="5"/>
+                                <StackPanel Orientation="Horizontal" Width="300">
+                                    <TextBlock Text="{Binding Path=ArrivalTime, StringFormat=HH:mm}" FontSize="30" Margin="0 0 20 0"/>
+                                    <TextBlock Text="{Binding Path=DepartureTime, StringFormat=HH:mm}" FontSize="30"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
                         <ItemContainerTemplate.Triggers>
                             <DataTrigger
                                 Binding="{Binding Path=FirstName}"
                                 Value="{x:Null}">
-                                <Setter Property="Visibility" TargetName="SpSelectedGroup" Value="Collapsed"/>
+                                <Setter Property="Visibility" TargetName="BSelectedGroup" Value="Collapsed"/>
                             </DataTrigger>
                         </ItemContainerTemplate.Triggers>
                     </ItemContainerTemplate>

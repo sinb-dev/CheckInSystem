@@ -9,7 +9,7 @@
     <Grid Margin="10">
         <StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
-                <TextBlock Text="Vælge dato" Width="80" />
+                <TextBlock Text="Vælg dato" Width="80" />
                 <customControls:DatePickerNoWatermark Width="100" x:Name="DpSelectedDate"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0 0 0 10">
@@ -32,6 +32,9 @@
                 <Button Content="Annuler" IsCancel="True" Margin="0 0 10 0"/>
                 <Button Content="Tilføj tid" Click="BtnSaveTime"/>
             </StackPanel>
+            <StackPanel.LayoutTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+            </StackPanel.LayoutTransform>
         </StackPanel>
     </Grid>
 </Window>

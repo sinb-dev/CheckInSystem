@@ -26,5 +26,8 @@
                     Margin="0,0,10,0"/>
             <Button IsCancel="True" MinWidth="60" Content="Annuller"/>
         </WrapPanel>
+        <Grid.LayoutTransform>
+            <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+        </Grid.LayoutTransform>
     </Grid>
 </Window>

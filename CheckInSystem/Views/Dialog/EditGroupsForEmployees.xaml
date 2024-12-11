@@ -5,7 +5,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:CheckInSystem.Views.Dialog"
         mc:Ignorable="d"
-        Title="EditGroupsForEmployees" Height="350" Width="250">
+        Title="EditGroupsForEmployees" Height="350" Width="250"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
             <RadioButton x:Name="RdAddGroup" Content="Tilføj til gruppe" IsChecked="True"/>
@@ -21,6 +22,9 @@
                         Margin="0,0,10,0"/>
                 <Button IsCancel="True" MinWidth="60" Content="Annuller"/>
             </StackPanel>
+            <StackPanel.LayoutTransform>
+                <ScaleTransform ScaleX="1.4" ScaleY="1.4"/>
+            </StackPanel.LayoutTransform>
         </StackPanel>
     </Grid>
 </Window>
