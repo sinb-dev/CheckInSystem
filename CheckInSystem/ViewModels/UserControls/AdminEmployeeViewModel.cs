@@ -19,4 +19,14 @@ public class AdminEmployeeViewModel : ViewmodelBase
     {
         EditEmployeeWindow.Open(employee);
     }
+
+    public void DeleteEmployee(Employee employee)
+    {
+        employee.DeleteFromDb();
+        foreach (var group in Groups)
+        {
+            group.Members.Remove(employee);
+        }
+        Employees.Remove(employee);
+    }
 }

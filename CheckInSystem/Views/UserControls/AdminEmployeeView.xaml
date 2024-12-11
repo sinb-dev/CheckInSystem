@@ -50,6 +50,10 @@
                                         Click="BtnEditEmployeeGroup"
                                         FontSize="25"
                                         Margin="5"/>
+                                <Button Content="Slet"
+                                        Click="BtnDeleteEmployee"
+                                        FontSize="25"
+                                        Margin="5"/>
                                 <StackPanel Orientation="Horizontal" Width="300">
                                     <TextBlock Text="{Binding Path=ArrivalTime, StringFormat=HH:mm}" FontSize="30" Margin="0 0 20 0"/>
                                     <TextBlock Text="{Binding Path=DepartureTime, StringFormat=HH:mm}" FontSize="30"/>

@@ -56,4 +56,20 @@ public partial class AdminEmployeeView : UserControl
         AdminEmployeeViewModel.SelectedEmployees.Remove(employee);
         Debug.WriteLine($"{employee.FirstName} Unchecked");
     }
+
+    private void BtnDeleteEmployee(object sender, RoutedEventArgs e)
+    {
+        Button button = (Button)sender;
+        Employee employee = (Employee)button.DataContext;
+        MessageBoxResult result =
+            MessageBox.Show(
+                $"Er du sikker på at du vil slette {employee.FirstName} {employee.MiddleName} {employee.LastName}",
+                "Sletning",
+                MessageBoxButton.YesNo, 
+                MessageBoxImage.Warning);
+        if (result == MessageBoxResult.Yes)
+        {
+            vm.DeleteEmployee(employee);
+        }
+    }
 }
