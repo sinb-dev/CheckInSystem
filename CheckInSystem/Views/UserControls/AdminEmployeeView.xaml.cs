@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using CheckInSystem.Models;
 using CheckInSystem.ViewModels;
 using CheckInSystem.ViewModels.UserControls;
+using CheckInSystem.Views.Dialog;
 
 namespace CheckInSystem.Views.UserControls;
 
@@ -38,7 +39,13 @@ public partial class AdminEmployeeView : UserControl
     {
         Button button = (Button)sender;
         Employee employee = (Employee)button.DataContext;
-        //TODO: Open EmployeeGroup
+        
+        EditGroupsForEmployees editGroupsForEmployees = new (ViewmodelBase.Groups);
+        if (editGroupsForEmployees.ShowDialog() == true && editGroupsForEmployees.SelectedGroup != null)
+        {
+            if (editGroupsForEmployees.AddGroup) editGroupsForEmployees.SelectedGroup.AddEmployee(employee);
+            if (editGroupsForEmployees.RemoveGroup) editGroupsForEmployees.SelectedGroup.RemoveEmployee(employee);
+        }
     }
 
     private void CbSelected(object sender, RoutedEventArgs e)
