@@ -28,4 +28,9 @@ public partial class EditEmployeeWindow : Window
             editWindow.Show();
         });
     }
+
+    private void Close(object sender, RoutedEventArgs e)
+    {
+       Close();
+    }
 }
