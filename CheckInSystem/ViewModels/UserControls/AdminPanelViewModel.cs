@@ -38,6 +38,7 @@ public class AdminPanelViewModel : ViewmodelBase
     public void EditNextScannedCard()
     {
         CardReader.State.UpdateNextEmployee = true;
+        Views.Dialog.WaitingForCardDialog.Open();
     }
 
     public void SwitchToGroups()

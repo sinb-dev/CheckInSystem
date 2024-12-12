@@ -102,6 +102,11 @@ public class ACR122U
             CardScanned(cardID);
             editEmployee = ViewmodelBase.Employees.Where(e => e.CardID == cardID).FirstOrDefault();
         }
+        if (Views.Dialog.WaitingForCardDialog.Instance != null) 
+            Application.Current.Dispatcher.Invoke( () => {
+                Views.Dialog.WaitingForCardDialog.Instance.Close();
+            });
+        
         EditEmployeeWindow.Open(editEmployee);
     }
 

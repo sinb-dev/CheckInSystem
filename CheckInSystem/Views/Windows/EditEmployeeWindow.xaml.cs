@@ -13,6 +13,7 @@ public partial class EditEmployeeWindow : Window
         this.DataContext = vm;
         Closing += vm.OnWindowClosing;
         InitializeComponent();
+        Topmost = true;
         vm.UpdateCardMessage = UpdateCardMessage;
     }
     
