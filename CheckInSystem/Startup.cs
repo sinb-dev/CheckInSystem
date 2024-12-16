@@ -19,6 +19,8 @@ public class Startup
             new ObservableCollection<Group>(Group.GetAllGroups(new List<Employee>(ViewmodelBase.Employees)));
         OpenEmployeeOverview();
         AddAdmin();
+        Database.Maintenance.CheckOutEmployeesIfTheyForgot();
+        Database.Maintenance.CheckForEndedOffSiteTime();
     }
 
     private static void OpenEmployeeOverview()
