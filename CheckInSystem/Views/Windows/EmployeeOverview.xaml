@@ -28,7 +28,7 @@
                                 <ItemsControl.ItemTemplate>
                                     <ItemContainerTemplate>
                                         <StackPanel Margin="5"
-                                                    Background="Red"
+                                                    Background="#d55e00"
                                                     x:Name="MemberPanel"
                                                     Visibility="{Binding Path=IsOffSite, Converter={x:Static checkInSystem:Converters.VisibleIfFalse}}">
                                             <StackPanel Orientation="Horizontal" Margin="10">
@@ -51,7 +51,7 @@
                                             <DataTrigger 
                                                 Binding="{Binding Path=IsCheckedIn}"
                                                 Value="True">
-                                                <Setter Property="Background" TargetName="MemberPanel" Value="Green">
+                                                <Setter Property="Background" TargetName="MemberPanel" Value="#009e73">
                                                 </Setter>
                                             </DataTrigger>
                                         </ItemContainerTemplate.Triggers>
