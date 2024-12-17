@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:CheckInSystem.Views.Windows"
         mc:Ignorable="d"
-        Title="EditOffsite" Height="150" Width="300"
+        Title="Ændre orlov" Height="150" Width="300"
         WindowStartupLocation="CenterScreen">
     <Grid>
         <StackPanel>
