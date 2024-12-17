@@ -6,6 +6,8 @@ using CheckInSystem.ViewModels;
 using CheckInSystem.Views.Windows;
 using Dapper;
 using FrApp42.ACR122U;
+using PCSC;
+using PCSC.Iso7816;
 
 
 namespace CheckInSystem.CardReader;
@@ -48,11 +50,45 @@ public class ACR122U
     private static void OnCardRemoved()
     {
         Debug.WriteLine("Card removed");
-    } 
+    }
+
+    private static bool SignalError()
+    {
+        var ctx = ContextFactory.Instance.Establish(SCardScope.System);
+        var name = Reader.GetDevice();
+
+        var isoReader = new IsoReader(
+            context: ctx,
+            readerName: name,
+            mode: SCardShareMode.Shared,
+            protocol: SCardProtocol.Any,
+            releaseContextOnDispose: true);
+        var apdu = new CommandApdu(IsoCase.Case3Short, isoReader.ActiveProtocol) {
+            CLA = 0xFF,
+            Instruction = 0x00,
+            P1 = 0x40,
+            P2 = 0b01000000,
+            Data = new byte[]
+            {
+                0x1,
+                0x2,
+                0x2,
+                0x2,
+            },
+        };
+
+        var response = isoReader.Transmit(apdu);
+        
+        return response.SW1 == 0x90;
+    }
     
     private static void CardScanned(string cardID)
     {
-        if (cardID == "") return;
+        if (cardID == "")
+        {
+            Debug.WriteLine(SignalError());
+            return;
+        }
         
         if (State.UpdateNextEmployee)
         {
