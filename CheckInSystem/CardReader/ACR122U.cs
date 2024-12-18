@@ -16,6 +16,19 @@ public class ACR122U
 {
     public static readonly Reader Reader = new Reader();
     
+    [Flags]
+    public enum LedStateControl
+    {
+        BlinkingMaskGreen = 0b1000_0000,
+        BlinkingMastRed = 0b0100_0000,
+        InitialblinkingStateGreen = 0b0010_0000,
+        InitialblinkingStateRed = 0b0001_0000,
+        StateMaskGreen = 0b0000_1000,
+        StateMaskRed = 0b0000_0100,
+        FinalStateGreen = 0b0000_0010,
+        FinalStateRed = 0b0000_0001,
+    }
+    
     public static void StartReader()
     {
         Reader.Connected += OnReaderConnected;
@@ -67,13 +80,13 @@ public class ACR122U
             CLA = 0xFF,
             Instruction = 0x00,
             P1 = 0x40,
-            P2 = 0b01000000,
+            P2 = (byte) LedStateControl.BlinkingMastRed,
             Data = new byte[]
             {
-                0x1,
-                0x2,
-                0x2,
-                0x2,
+                0x1, //T1 Duration Initial Blinking State (Unit = 100 ms)
+                0x2, //T2 Duration Toggle Blinking State (Unit = 100 ms)
+                0x2, //Number of repetition
+                0x2, //Link to Buzzer (00h - 03h)
             },
         };
 
@@ -86,7 +99,7 @@ public class ACR122U
     {
         if (cardID == "")
         {
-            Debug.WriteLine(SignalError());
+            SignalError();
             return;
         }
         
