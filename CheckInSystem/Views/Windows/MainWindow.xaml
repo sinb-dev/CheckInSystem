@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CheckInSystem"
         mc:Ignorable="d"
-        Title="Check In System v0.1.1-alpha" Height="750" Width="1200"
+        Title="Check In System v0.2.0-alpha" Height="750" Width="1200"
         MinHeight="350"
         MinWidth="630"
         WindowStartupLocation="CenterScreen">

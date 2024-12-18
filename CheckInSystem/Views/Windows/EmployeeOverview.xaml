@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CheckInSystem.Views"
         xmlns:checkInSystem="clr-namespace:CheckInSystem"
         mc:Ignorable="d"
-        Title="EmployeeOverview" Height="1080" Width="1920"
+        Title="Oversigt Check In System" Height="1080" Width="1920"
         WindowStartupLocation="Manual"
         WindowStyle="None"
         ResizeMode="NoResize">
