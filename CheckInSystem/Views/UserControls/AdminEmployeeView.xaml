@@ -8,6 +8,7 @@
              d:DesignHeight="300" d:DesignWidth="630">
     <Grid>
         <ScrollViewer>
+            <!-- list of Employees -->
             <ItemsControl ItemsSource="{Binding SelectedEmployeeGroup}" x:Name="IcSelectedGroup" AlternationCount="2">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -23,10 +24,12 @@
                                         <ScaleTransform ScaleX="2" ScaleY="2"/>
                                     </CheckBox.LayoutTransform>
                                 </CheckBox>
+                                <!-- StackPanel for full name -->
                                 <StackPanel Orientation="Horizontal" Width="500">
                                     <TextBlock Text="{Binding Path=FirstName}" FontSize="30" Margin="0 0 7 0"/>
                                     <TextBlock Text="{Binding Path=MiddleName}" FontSize="30" Margin="0 0 7 0">
                                         <TextBlock.Style>
+                                            <!-- Hides the TextBlock if there is no middle name -->
                                             <Style TargetType="TextBlock">
                                                 <Style.Triggers>
                                                     <Trigger Property="Text" Value="">
@@ -38,6 +41,7 @@
                                     </TextBlock> 
                                     <TextBlock Text="{Binding Path=LastName}" FontSize="30" Margin="0 0 0 0"/>
                                 </StackPanel>
+                                <!-- End of stackPanel for full name -->
                                 <Button Content="Rediger" 
                                         Click="BtnOpenEmployeeEdit" 
                                         FontSize="25"
@@ -54,12 +58,14 @@
                                         Click="BtnDeleteEmployee"
                                         FontSize="25"
                                         Margin="5"/>
+                                <!-- Most recent check in and out time -->
                                 <StackPanel Orientation="Horizontal" Width="300">
                                     <TextBlock Text="{Binding Path=ArrivalTime, StringFormat=HH:mm}" FontSize="30" Margin="0 0 20 0"/>
                                     <TextBlock Text="{Binding Path=DepartureTime, StringFormat=HH:mm}" FontSize="30"/>
                                 </StackPanel>
                             </StackPanel>
                         </Border>
+                        <!-- Hides the employee if there is no first name -->
                         <ItemContainerTemplate.Triggers>
                             <DataTrigger
                                 Binding="{Binding Path=FirstName}"
