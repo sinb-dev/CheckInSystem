@@ -3,6 +3,7 @@ using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Windows;
+using CheckInSystem.Views.Dialog;
 
 namespace CheckInSystem;
 
@@ -13,6 +14,8 @@ public partial class App : Application
 {
     void App_Startup(object sender, StartupEventArgs e)
     {
+        LoadingStartup loadingStartup = new LoadingStartup();
+        loadingStartup.Show();
         AppDomain.CurrentDomain.UnhandledException += log;
         try
         {
@@ -20,6 +23,7 @@ public partial class App : Application
             {
                 Current.Shutdown();
             }
+            loadingStartup.Close();
         }
         catch (Exception exception)
         {
