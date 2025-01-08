@@ -16,16 +16,10 @@ public partial class App : Application
         AppDomain.CurrentDomain.UnhandledException += log;
         try
         {
-            if (!Database.Database.EnsureDatabaseAvailable())
+            if (!CheckInSystem.Startup.Run())
             {
-                MessageBox.Show("Kunne ikke oprette forbindelse til databasen!",
-                    "Uforventet Fejl", MessageBoxButton.OK, MessageBoxImage.Error);
                 Current.Shutdown();
-
-                return;
             }
-
-            CheckInSystem.Startup.Run();
         }
         catch (Exception exception)
         {
