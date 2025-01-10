@@ -10,3 +10,4 @@
 
 ### SQL
 - [ ] Auto delete unsed cards
+- [ ] Migrate to SQLite

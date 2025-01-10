@@ -13,7 +13,12 @@ local Microsoft SQL Server database.
 
 ## Documentation
 
+- [Introduction](docs/Intro.md)
 - [ACR122U Documentation][card-reader-docs]
+
+## To-Do Tracking 
+
+Features and fixes not done yet are tracked in [Todo.md](docs/Todo.md)
 
 [card-reader-docs]: https://www.acs.com.hk/download-manual/419/API-ACR122U-2.04.pdf
 
