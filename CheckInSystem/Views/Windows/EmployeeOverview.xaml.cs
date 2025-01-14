@@ -13,4 +13,16 @@ public partial class EmployeeOverview : Window
         this.DataContext = vm;
         InitializeComponent();
     }
+
+    private void BtnZoomOut(object sender, RoutedEventArgs e)
+    {
+        vm.ZoomOut();
+        vm.UpdateConfig();
+    }
+
+    private void BtnZoomIn(object sender, RoutedEventArgs e)
+    {
+        vm.ZoomIn();
+        vm.UpdateConfig();
+    }
 }

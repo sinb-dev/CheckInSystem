@@ -11,6 +11,10 @@
         WindowStyle="None"
         ResizeMode="NoResize">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
         <ItemsControl ItemsSource="{Binding Groups}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
@@ -62,6 +66,14 @@
                     </StackPanel>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
+            <ItemsControl.LayoutTransform>
+                <ScaleTransform ScaleX="{Binding Path=ScaleSize}" ScaleY="{Binding Path=ScaleSize}"/>
+            </ItemsControl.LayoutTransform>
         </ItemsControl>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="⌕" FontSize="30"/>
+            <Button Content="-" Width="30" FontSize="40" Padding="0 -10 0 0" Click="BtnZoomOut"/>
+            <Button Content="+" Width="30" FontSize="40" Padding="0 -10 0 0" Click="BtnZoomIn"/>
+        </StackPanel>
     </Grid>
 </Window>
