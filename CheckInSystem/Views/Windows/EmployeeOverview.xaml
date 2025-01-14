@@ -6,10 +6,11 @@
         xmlns:local="clr-namespace:CheckInSystem.Views"
         xmlns:checkInSystem="clr-namespace:CheckInSystem"
         mc:Ignorable="d"
-        Title="Oversigt Check In System" Height="1080" Width="1920"
+        Title="Oversigt Check In System"
         WindowStartupLocation="Manual"
-        WindowStyle="None"
-        ResizeMode="NoResize">
+        WindowStyle="{Binding WindowStyle}"
+        ResizeMode="{Binding ResizeMode}"
+        WindowState="{Binding WindowState}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -74,6 +75,7 @@
             <TextBlock Text="⌕" FontSize="30"/>
             <Button Content="-" Width="30" FontSize="40" Padding="0 -10 0 0" Click="BtnZoomOut"/>
             <Button Content="+" Width="30" FontSize="40" Padding="0 -10 0 0" Click="BtnZoomIn"/>
+            <Button Content="⛶" Width="30" FontSize="40" Padding="0 -10 0 0" Click="BtnFullScreenToggle" />
         </StackPanel>
     </Grid>
 </Window>

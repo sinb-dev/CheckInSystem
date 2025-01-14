@@ -25,4 +25,9 @@ public partial class EmployeeOverview : Window
         vm.ZoomIn();
         vm.UpdateConfig();
     }
+
+    private void BtnFullScreenToggle(object sender, RoutedEventArgs e)
+    {
+        vm.ToggleFullscreen();
+    }
 }
